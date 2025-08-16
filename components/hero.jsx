@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import StartedButton from "@/components/ui/get-startedbutton";
+import Component from "@/components/hero-particles";
 
 const HeroSection = () => {
   const imageRef = useRef(null);
@@ -48,10 +49,15 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="pt-40 pb-20 px-4">
-      <div className="container mx-auto text-center">
+    <section className="pt-30 pb-20 px-4">
+      <div className="container mx-auto text-center ">
+        <div className="hero-image-wrapper   md:mt-0">
+          <div ref={imageRef} className="hero-image w-full ">
+            <Component/>
+          </div>
+        </div>
        <TypewriterEffect words={words}/>
-        <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto mt-3">
           An AI-powered financial management platform that helps you track,
           analyze, and optimize your spending with real-time insights.
         </p>
@@ -59,22 +65,9 @@ const HeroSection = () => {
           <Link href="/dashboard">
           <StartedButton text={"Get Started"} />
           </Link>
-          <Link href="https://www.youtube.com/roadsidecoder">
-          <StartedButton text={"Watch Demo"} />
-          </Link>
+        
         </div>
-        <div className="hero-image-wrapper mt-5 md:mt-0">
-          <div ref={imageRef} className="hero-image">
-            <Image
-              src="/abcd.jpg"
-              width={1200}
-              height={660}
-              alt="Dashboard Preview"
-              className="rounded-lg shadow-2xl border mx-auto"
-              priority
-            />
-          </div>
-          </div>
+        
       </div>
     </section>
   );
