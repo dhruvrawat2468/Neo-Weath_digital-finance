@@ -19,10 +19,10 @@ GEMINI_API_KEY=
 RESEND_API_KEY=
 
 ARCJET_KEY=
-
+Do not include the following in .env-This is just for knowledge:
 LIBRARIES USED-
 RESEND-for sending emails
 REACT EMAIL-For Creating customized email templates
 INNGEST-For Creating cron jobs
-ARCJET-For 
+ARCJET-For bot protection
 ```
