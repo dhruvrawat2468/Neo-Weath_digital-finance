@@ -18,18 +18,33 @@ async function ensureDbUser() {
   const clerkUser = await currentUser();
   if (!clerkUser) throw new Error("Unauthorized");
 
-  const user = await db.user.upsert({
+  const email = clerkUser.emailAddresses[0]?.emailAddress ?? "";
+
+  // 1. Try to find by clerkUserId (returning user)
+  let user = await db.user.findUnique({
     where: { clerkUserId: userId },
-    update: {},
-    create: {
+  });
+  if (user) return user;
+
+  // 2. Try to find by email (same person, different clerkUserId — e.g. re-signup)
+  user = await db.user.findUnique({ where: { email } });
+  if (user) {
+    // Attach the current clerkUserId to the existing record
+    return await db.user.update({
+      where: { email },
+      data: { clerkUserId: userId },
+    });
+  }
+
+  // 3. Brand new user — create the record
+  return await db.user.create({
+    data: {
       clerkUserId: userId,
       name: `${clerkUser.firstName ?? ""} ${clerkUser.lastName ?? ""}`.trim(),
       imageUrl: clerkUser.imageUrl,
-      email: clerkUser.emailAddresses[0]?.emailAddress ?? "",
+      email,
     },
   });
-
-  return user;
 }
 
 const serializeTransaction = (obj) => {
