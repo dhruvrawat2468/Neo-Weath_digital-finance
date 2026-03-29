@@ -90,7 +90,8 @@ export function CreateAccountDrawer({ children }) {
               </label>
               <Input
                 id="name"
-                placeholder="e.g., Main Checking"
+                placeholder="Name (eg. rent, emi etc.)"
+                className="text-black placeholder:text-gray-400"
                 {...register("name")}
               />
               {errors.name && (
@@ -109,7 +110,7 @@ export function CreateAccountDrawer({ children }) {
                 onValueChange={(value) => setValue("type", value)}
                 defaultValue={watch("type")}
               >
-                <SelectTrigger id="type">
+                <SelectTrigger id="type" className="text-black">
                   <SelectValue placeholder="Select type" />
                 </SelectTrigger>
                 <SelectContent>
@@ -133,7 +134,8 @@ export function CreateAccountDrawer({ children }) {
                 id="balance"
                 type="number"
                 step="0.01"
-                placeholder="0.00"
+                placeholder="Enter initial balance (eg. 5000.00)"
+                className="text-black placeholder:text-gray-400"
                 {...register("balance")}
               />
               {errors.balance && (

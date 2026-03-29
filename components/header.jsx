@@ -56,7 +56,12 @@ const Header = () => {
           </SignedIn>
           <SignedOut>
             <SignInButton forceRedirectUrl="/dashboard">
-              <Button variant="outline">Login</Button>
+              <Button
+                variant="outline"
+                className="text-black hover:text-[#00f0ff] hover:border-[#00f0ff] hover:shadow-[0_0_10px_#00f0ff80] transition-all duration-200"
+              >
+                Login
+              </Button>
             </SignInButton>
           </SignedOut>
           <SignedIn>

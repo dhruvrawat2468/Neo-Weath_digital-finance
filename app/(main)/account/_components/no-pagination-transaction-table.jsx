@@ -380,7 +380,7 @@ export function NoPaginationTransactionTable({ transactions }) {
                         </Tooltip>
                       </TooltipProvider>
                     ) : (
-                      <Badge variant="outline" className="gap-1">
+                      <Badge className="gap-1 bg-slate-700 text-slate-100 hover:bg-slate-600 border-0">
                         <Clock className="h-3 w-3" />
                         One-time
                       </Badge>
